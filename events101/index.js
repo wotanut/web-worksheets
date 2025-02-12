@@ -47,6 +47,26 @@ function snitchAttacher() {
 
 function reportAttacher() {
   let report = document.querySelector("#mousereporter");
+  report.addEventListener("mousemove", function (e) {
+    reportUpdater(e);
+  });
 }
 
-function reportUpdater(event) {}
+function reportUpdater(event) {
+  document.querySelector(
+    "#report"
+  ).textContent = `x: ${event.screenX} y: ${event.screenY}`;
+}
+
+function idValidationAttacher() {
+  let newid = document.querySelector("#newid");
+  newid.addEventListener("input", function (e) {
+    /** @type {string} */
+    let value = e.target.value;
+    if (value.includes(" ")) {
+      newid.classList.add("invalid");
+    } else {
+      newid.classList.remove("invalid");
+    }
+  });
+}
